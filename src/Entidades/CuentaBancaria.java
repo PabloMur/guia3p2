@@ -45,7 +45,16 @@ public class CuentaBancaria {
     }
 
     public double Debito(double gasto) {
+        if(gasto > this.getBalance()) {
+            System.out.println("No hay dinero suficiente para realizar esta operacion");
+            return this.balance;
+        }
         this.balance -= gasto;
         return balance;
+    }
+
+    @Override
+    public String toString() {
+        return STR."Cuenta Bancaria: \{this.getId()}, Titular: \{this.getNombre()}, Balance: \{this.balance}";
     }
 }
