@@ -1,7 +1,6 @@
 import Entidades.CuentaBancaria;
 import Entidades.Empleado;
-
-import java.sql.SQLOutput;
+import Entidades.ItemVenta;
 import java.util.Scanner;
 
 
@@ -31,7 +30,22 @@ public class Main {
         System.out.println(STR."Cuenta bancaria 1 BALANCE ACTUAL: $\{cuentaUno.Debito(30000)}");
         System.out.println(cuentaUno.toString());
     }
-
+    //Ejercicio 3
+    public static void puntoTres(){
+        ItemVenta yerbaPlayadito = new ItemVenta("Yerba Playadito", 5, 5500);
+        System.out.println("Este es el item venta creado por el programador");
+        System.out.println(yerbaPlayadito.toString());
+        int nuevaCantidad;
+        System.out.println("Ingrese una nueva cantidad para el stock de este item");
+        nuevaCantidad = new Scanner(System.in).nextInt();
+        yerbaPlayadito.setCantidad(nuevaCantidad);
+        System.out.println(yerbaPlayadito.toString());
+        System.out.println("Ingrese el nuevo precio del item venta: ");
+        double nuevoPrecio = new Scanner(System.in).nextDouble();
+        yerbaPlayadito.setPrecioUnitario(nuevoPrecio);
+        System.out.println(yerbaPlayadito.toString());
+        System.out.println("Este es el nuevo precio total del item venta: " + yerbaPlayadito.calcularPrecioTotal());
+    }
 
     public static void main(String[] args) {
         boolean seguir = true;
@@ -41,6 +55,7 @@ public class Main {
             System.out.println("Bienvenido a la guia 3 de Programacion 2");
             System.out.println("1.- Ejercicio 1 (Empleado).");
             System.out.println("2.- Ejercicio 2 (Cuenta Bancaria).");
+            System.out.println("3.- Ejercicio 3 (Item Venta).");
             System.out.println("0.- Salir.");
             System.out.println("Ingrese una opcion: ");
             int opcion = sc.nextInt();
@@ -55,12 +70,19 @@ public class Main {
                     puntoDos();
                     break;
                 }
+                case 3:{
+                    System.out.println("----------- Punto Tres -----------");
+                    puntoTres();
+                    break;
+                }
                 case 0:{
-                    System.out.println("Salir");
+                    System.out.println("Dale, nos vemos la proxima!");
                     seguir = false;
+                    break;
                 }
                 default:{
                     System.out.println("Ingrese una opcion valida");
+                    break;
                 }
             }
         }
